@@ -1,7 +1,6 @@
 import com.johnsnowlabs.nlp.DocumentAssembler
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.ml.Pipeline
-import com.johnsnowlabs.nlp.base._
 import com.johnsnowlabs.nlp.annotator._
 import com.johnsnowlabs.nlp.annotators.Tokenizer
 import com.johnsnowlabs.nlp.annotators.ner.{MedicalNerModel, NerConverter}

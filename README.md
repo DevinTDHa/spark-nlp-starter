@@ -10,8 +10,8 @@ export SPARK_NLP_LICENSE=$YOUR_SPARK_NLP_LICENSE; \
 export AWS_ACCESS_KEY_ID=$YOUR_AWS_ACCESS_KEY_ID; \
 export AWS_SECRET_ACCESS_KEY=$YOUR_AWS_SECRET_ACCESS_KEY; \
 ./bin/spark-submit \
---conf spark.driver.extraJavaOptions=-Dconfig.file=./application.conf \
---conf spark.executor.extraJavaOptions=-Dconfig.file=./application.conf \
+--conf spark.driver.extraJavaOptions=-Dconfig.file=$PATH_TO/application.conf \
+--conf spark.executor.extraJavaOptions=-Dconfig.file=$PATH_TO/application.conf \
 --class "Main" $PATH_TO/target/scala-2.12/mt-sinai-demo-assembly-1.0.jar
 ```
 Note that the environment variables need to be set on each node.
