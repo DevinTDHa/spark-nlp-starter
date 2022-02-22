@@ -3,32 +3,30 @@ import com.typesafe.sbt.packager.archetypes.JavaAppPackaging
 enablePlugins(JavaServerAppPackaging)
 enablePlugins(JavaAppPackaging)
 
-val scalaTestVersion = "3.0.0"
+val scalaTestVersion = "3.2.9"
 
-name := "mt-sinai-demo"
+name := "spark-nlp-starter"
 
-version := "1.1"
+version := "3.3.4"
 
-scalaVersion := "2.11.12"
+scalaVersion := "2.12.10"
 
 javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
 
-libraryDependencies ++= {
-  val sparkVer = "2.4.5"
-  val sparkNLP = "3.0.2"
-  val sparkNlpJsl = "3.0.2"
+licenses := Seq("Apache-2.0" -> url("https://opensource.org/licenses/Apache-2.0"))
 
-  // The secret is read from a environment variable. Alternatively can be defined explicitly here as well.
-  //  val jslSecret = "$YOURSECRET"
-  val jslSecret = sys.env("SECRET")
+developers in ThisBuild := List(
+  Developer(id = "maziyarpanahi", name = "Maziyar Panahi", email = "maziyar.panahi@iscpif.fr", url = url("https://github.com/maziyarpanahi")),
+)
+
+libraryDependencies ++= {
+  val sparkVer = "3.1.2"
+  val sparkNLP = "3.3.4"
   Seq(
     "org.apache.spark" %% "spark-core" % sparkVer % Provided,
-    "org.apache.spark" %% "spark-sql" % sparkVer % Provided,
     "org.apache.spark" %% "spark-mllib" % sparkVer % Provided,
     "org.scalatest" %% "scalatest" % scalaTestVersion % "test",
-    "com.johnsnowlabs.nlp" %% "spark-nlp-spark24" % sparkNLP,
-    "com.johnsnowlabs.nlp" % "spark-nlp-jsl-spark24" % sparkNLP
-      from s"https://pypi.johnsnowlabs.com/$jslSecret/spark-nlp-jsl-$sparkNlpJsl-spark24.jar"
+    "com.johnsnowlabs.nlp" %% "spark-nlp" % sparkNLP
   )
 }
 
