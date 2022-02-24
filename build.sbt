@@ -30,11 +30,6 @@ libraryDependencies ++= {
   )
 }
 
-excludeDependencies ++= Seq(
-  // transitive protobuf conflicts with bundled one
-  ExclusionRule("com.google.protobuf", "protobuf-java"), // TODO: do not exclude for certain spark-nlp versions
-  ExclusionRule("com.google.protobuf", "protobuf-java-util") // TODO: do not exclude for certain spark-nlp versions
-)
 /** Disables tests in assembly */
 test in assembly := {}
 
