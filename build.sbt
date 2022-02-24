@@ -26,10 +26,15 @@ libraryDependencies ++= {
     "org.apache.spark" %% "spark-core" % sparkVer % Provided,
     "org.apache.spark" %% "spark-mllib" % sparkVer % Provided,
     "org.scalatest" %% "scalatest" % scalaTestVersion % "test",
-    "com.johnsnowlabs.nlp" %% "spark-nlp" % sparkNLP
+//    "com.johnsnowlabs.nlp" %% "spark-nlp" % sparkNLP
   )
 }
 
+excludeDependencies ++= Seq(
+  // transitive protobuf conflicts with bundled one
+  ExclusionRule("com.google.protobuf", "protobuf-java"), // TODO: do not exclude for certain spark-nlp versions
+  ExclusionRule("com.google.protobuf", "protobuf-java-util") // TODO: do not exclude for certain spark-nlp versions
+)
 /** Disables tests in assembly */
 test in assembly := {}
 
@@ -39,7 +44,6 @@ assemblyMergeStrategy in assembly := {
   case x if x.startsWith("aws") => MergeStrategy.last
   case _ => MergeStrategy.last
 }
-
 /*
 * If you wish to make a Uber JAR (Fat JAR) without Spark NLP
 * because your environment already has Spark NLP included same as Apache Spark
