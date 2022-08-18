@@ -20,13 +20,13 @@ developers in ThisBuild := List(
 )
 
 libraryDependencies ++= {
-  val sparkVer = "3.1.2"
-  val sparkNLP = "3.3.4"
+  val sparkVer = "3.2.1"
+  val sparkNLP = "4.0.0"
   Seq(
     "org.apache.spark" %% "spark-core" % sparkVer % Provided,
     "org.apache.spark" %% "spark-mllib" % sparkVer % Provided,
     "org.scalatest" %% "scalatest" % scalaTestVersion % "test",
-    "com.johnsnowlabs.nlp" %% "spark-nlp" % sparkNLP
+//    "com.johnsnowlabs.nlp" %% "spark-nlp" % sparkNLP
   )
 }
 
